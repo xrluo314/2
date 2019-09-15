@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>homework</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <button onclick="print()">press</button>
+
+
+
+
+    <script type="module">
+        const express = require('express');
+        var path = require("path");
+        const app = express();
+
+        app.use('/src', express.static(__dirname + '/src'));
+
+        app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname + '/index.html'));
+        });
+
+        app.listen(8080, () => console.log('Listening on port 8080!'));
+        express.static.mime.define({'application/javascript': ['js']});
+
+        import { ceilling } from './module.js';
+        function print() {
+            console.log(ceilling(13.5));
+        }
+    </script>
+</body>
+
+</html>
